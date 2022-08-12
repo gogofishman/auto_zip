@@ -6,5 +6,7 @@ mshta vbscript:createobject("shell.application").shellexecute("%~s0","goto :Admi
 echo start reg  ...
 reg add HKEY_CLASSES_ROOT\*\shell\double_zip /ve /t REG_SZ /d "一键打包成双层zip" /f
 reg add HKEY_CLASSES_ROOT\*\shell\double_zip\command /ve /t REG_SZ /d "\"%~dp0auto_zip.exe\" \"%%1\"" /f
+reg add HKEY_CLASSES_ROOT\Directory\shell\double_zip /ve /t REG_SZ /d "一键打包成双层zip" /f
+reg add HKEY_CLASSES_ROOT\Directory\shell\double_zip\command /ve /t REG_SZ /d "\"%~dp0auto_zip.exe\" \"%%1\"" /f
 pause
 @echo on
