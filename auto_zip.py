@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 import subprocess
 import traceback
@@ -22,7 +23,7 @@ def main(in_dir):
 
     command = 'HaoZipC a -tzip -p"{1}" "{2}{3}(内层).zip" "{0}" -mm=Copy'.format(
         in_dir, file_pw, file_path, _name)
-    command2 = 'HaoZipC a -tzip -p"{1}" -v{4}m "{2}{3}.zip" "{2}{3}(内层).zip" -mm=Copy'.format(
+    command2 = 'HaoZipC a -tzip -v{4}m "{2}{3}.zip" "{2}{3}(内层).zip" -mm=Copy'.format(
         in_dir, file_pw, file_path, _name, size)
     # 同路径下需要有压缩程序 HaoZipC
     print('开始压缩。。。')
