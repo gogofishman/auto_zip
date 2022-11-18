@@ -18,6 +18,7 @@ def main(in_dir):
     global file_pw
     global size
     global words
+    global level
     file_path = os.path.dirname(in_dir) + "/"  # 文件路径
     file_name = os.path.basename(in_dir)  # 文件名带后缀
     _name, houzhui = os.path.splitext(file_name)
@@ -29,17 +30,18 @@ def main(in_dir):
                 print('发现敏感词:', w, ",已替换")
                 _name = _name.replace(w, 'O' * len(w))
     print('设置密码————————', file_pw)
+    print('压缩等级————————', level)
 
     # 压缩内层
     print("正在压缩内层包。。。。。")
-    command = 'HaoZipC a -tzip -p"{1}" "{2}{3}(内层).zip" "{0}" -mm=Copy'.format(
-        in_dir, file_pw, file_path, _name)
+    command = 'HaoZipC a -tzip -p"{1}" "{2}{3}(内层).zip" "{0}" -mx{4}'.format(
+        in_dir, file_pw, file_path, _name, level)
     subprocess.run(command, shell=True, cwd="./HaoZip")
 
     # 压缩外层
     if size != '' or size != '0':
         # 有分卷压缩参数
-        zip1_size = os.path.getsize("{0}{1}(内层).zip".format(file_path, _name))/1024/1024  # 获取内层压缩包大小
+        zip1_size = os.path.getsize("{0}{1}(内层).zip".format(file_path, _name)) / 1024 / 1024  # 获取内层压缩包大小
         if zip1_size >= int(size):
             print("正在压缩外层包，启用分卷压缩。。。。。")
             command2 = 'HaoZipC a -tzip -v{4}m "{2}{3}.zip" "{2}{3}(内层).zip" -mm=Copy'.format(
@@ -67,6 +69,8 @@ if __name__ == '__main__':
         file_pw = config['自定义']['压缩密码']
         size = config['自定义']['分卷压缩大小']
         words = config['自定义']['敏感词'].split('，')
+        level = config['自定义']['压缩等级']
+
         try:
             main(params)
         except Exception as e:
