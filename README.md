@@ -4,7 +4,7 @@
 
 **魔改于https://github.com/mengzonefire/auto_double_zip**
 
-使得工具更快捷更方便，同时加入了分卷压缩的选项
+使得工具更快捷更方便，同时加入了分卷压缩、压缩等级、敏感词替换的选项
 
 ---
 

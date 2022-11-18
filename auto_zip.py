@@ -6,7 +6,7 @@ import sys
 import time
 import configparser
 
-version = '1.1.1'
+version = '1.1.2'
 file_pw = ''  # 密码
 size = ''
 words = []
