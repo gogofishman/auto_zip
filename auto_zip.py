@@ -10,6 +10,7 @@ version = '1.1.2'
 file_pw = ''  # 密码
 size = ''
 words = []
+level = 0
 config = configparser.ConfigParser()
 
 
